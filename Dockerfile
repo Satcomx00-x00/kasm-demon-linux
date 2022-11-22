@@ -22,6 +22,7 @@ RUN usermod -aG sudo invoker
 RUN cd /opt && git clone https://github.com/Satcomx00-x00/Summon-for-docker.git demon && cd demon && ./setup.sh
 
 RUN pwd
+RUN ls
 RUN cd /home/kasm-default-profile/Summon-for-docker/demon && python3 summon.py install demon -u invoker
 
 # make a reboot in compile time
