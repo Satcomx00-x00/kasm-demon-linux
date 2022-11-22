@@ -19,11 +19,11 @@ RUN useradd invoker -m -s /bin/bash
 RUN echo "invoker:Summon" | chpasswd
 RUN usermod -aG sudo invoker
 
-RUN cd /opt && git clone https://github.com/Satcomx00-x00/Summon-for-docker.git demon && cd demon && ./setup.sh
+RUN cd /opt && git clone https://github.com/Satcomx00-x00/Summon-for-docker.git demon && cd demon && ./setup.sh && python3 summon.py install demon -u invoker
 
 RUN pwd
 RUN ls
-RUN cd /opt/Summon-for-docker && python3 summon.py install demon -u invoker
+# RUN cd /opt/Summon-for-docker && python3 summon.py install demon -u invoker
 
 # make a reboot in compile time
 RUN echo "reboot" >> /etc/rc.local
