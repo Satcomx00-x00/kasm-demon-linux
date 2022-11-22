@@ -12,36 +12,22 @@ WORKDIR $HOME
 RUN apt update
 # RUN apt -y upgrade
 RUN apt -y install apt-utils
-RUN apt -y install openvpn unzip wget tilix apt-utils
+RUN apt -y install openvpn unzip wget apt-utils git nano
 
-# Change Background to sth cool
-COPY assets/mr-robot-wallpaper.png  /usr/share/backgrounds/kali/mr-robot-wallpaper.png 
-COPY assets/evil-corp.png  /usr/share/backgrounds/kali/kali-layers-16x9.png
-COPY assets/mr-robot-walpaper-colored.png  /usr/share/backgrounds/kali/mr-robot-walpaper-colored.png
-COPY assets/rick.png  /usr/share/backgrounds/kali/rick.png
-COPY assets/wind-psych.png  /usr/share/backgrounds/kali/wind-psych.png
 
-# Install Starship
-RUN wget https://starship.rs/install.sh
-RUN chmod +x install.sh
-RUN ./install.sh -y
+RUN useradd invoker -m -s /bin/bash
+RUN echo "invoker:Summon" | chpasswd
+RUN usermod -aG sudo invoker
 
-# Add Starship to bashrc
-RUN echo 'eval "$(starship init bash)"' >> .bashrc
+RUN cd /opt && git clone https://github.com/RackunSec/Summon.git demon && cd demon && ./setup.sh
+# comment lines from 97 to 108 in the file /opt/demon/setup.sh
+RUN sed -i '97,108 s/^/#/' files/install_modules/demon.py
 
-# Add Starship Theme
-COPY config/starship.toml .config/starship.toml
+RUN python3 summon.py install demon -u invoker
 
-# Install Hack Nerd Font
-RUN wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
-RUN unzip Hack.zip -d /usr/local/share/fonts
-
-# Install Terminator
-RUN apt -y install terminator
-# Set up Nerd font in Terminator
-RUN mkdir .config/terminator
-COPY config/terminator.toml .config/terminator/config
-
+# make a reboot in compile time
+RUN echo "reboot" >> /etc/rc.local
+RUN python3 summon.py install all
 
 # Install XFCE Dark Theme
 # RUN apt -y install numix-gtk-theme
