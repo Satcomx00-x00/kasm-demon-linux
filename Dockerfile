@@ -22,6 +22,8 @@ RUN usermod -aG sudo invoker
 RUN cd /opt && git clone https://github.com/RackunSec/Summon.git demon && cd demon && ./setup.sh
 # comment lines from 97 to 108 in the file /opt/demon/setup.sh
 RUN sed -i '97,108 s/^/#/' files/install_modules/demon.py
+RUN sed -i '35 s/^/#/' setup.sh
+RUN sed -i '5s/^/ans="y" /' setup.sh
 
 RUN python3 summon.py install demon -u invoker
 
