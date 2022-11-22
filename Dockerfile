@@ -23,7 +23,7 @@ RUN cd /opt && git clone https://github.com/Satcomx00-x00/Summon-for-docker.git 
 
 RUN pwd
 RUN ls
-RUN cd /opt/Summon-for-docker/demon && python3 summon.py install demon -u invoker
+RUN cd /opt/Summon-for-docker && python3 summon.py install demon -u invoker
 
 # make a reboot in compile time
 RUN echo "reboot" >> /etc/rc.local
