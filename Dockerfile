@@ -11,7 +11,6 @@ WORKDIR $HOME
 ######### Customize Container Here ###########
 SHELL ["/bin/bash", "-c"]
 RUN apt-get update
-RUN apt-get -y upgrade
 RUN apt-get -y install openvpn unzip wget apt-utils git nano
 
 
