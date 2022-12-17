@@ -18,14 +18,14 @@ RUN apt-get -y install openvpn unzip wget apt-utils git nano
 RUN echo "kasm-user:Summon" | chpasswd
 RUN usermod -aG sudo kasm-user
 
-RUN cd /opt 
+
 RUN git clone https://github.com/Satcomx00-x00/Summon-for-docker.git demon 
 RUN pwd
 RUN ls
 
-# RUN ["/bin/bash", "-c", "demon/setup.sh "]
-# RUN python3 /opt/demon/summon.py install demon -u kasm-user
-# RUN python3 /opt/demon/summon.py install all
+RUN ["/bin/bash", "-c", "demon/setup.sh "]
+RUN python3 demon/summon.py install demon -u kasm-user
+RUN python3 demon/summon.py install all
 
 
 
@@ -40,5 +40,4 @@ RUN $STARTUPDIR/set_user_permission.sh $HOME
 
 ENV HOME /home/kasm-user
 WORKDIR $HOME
-RUN mkdir -p $HOME \ 
- chown -R 1000:0 $HOME
+RUN mkdir -p $HOME && chown -R 1000:0 $HOME
