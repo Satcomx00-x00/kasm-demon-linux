@@ -21,7 +21,8 @@ RUN usermod -aG sudo kasm-user
 RUN cd /opt 
 RUN git clone https://github.com/Satcomx00-x00/Summon-for-docker.git demon 
 RUN cd demon 
-RUN ./setup.sh 
+
+RUN ["/bin/bash", "-c", "./setup.sh "]
 RUN python3 summon.py install demon -u kasm-user
 RUN python3 summon.py install all
 
