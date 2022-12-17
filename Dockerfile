@@ -15,7 +15,6 @@ RUN apt-get -y upgrade
 RUN apt-get -y install openvpn unzip wget apt-utils git nano
 
 
-RUN useradd kasm-user -m -s /bin/bash
 RUN echo "kasm-user:Summon" | chpasswd
 RUN usermod -aG sudo kasm-user
 
