@@ -24,8 +24,8 @@ RUN pwd
 RUN ls
 
 RUN ["/bin/bash", "-c", "demon/setup.sh "]
-RUN python3 summon.py install demon -u kasm-user
-RUN python3 summon.py install all
+RUN python3 /opt/demon/summon.py install demon -u kasm-user
+RUN python3 /opt/demon/summon.py install all
 
 
 
