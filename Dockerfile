@@ -23,9 +23,9 @@ RUN git clone https://github.com/Satcomx00-x00/Summon-for-docker.git demon
 RUN pwd
 RUN ls
 
-RUN ["/bin/bash", "-c", "demon/setup.sh "]
-RUN python3 /opt/demon/summon.py install demon -u kasm-user
-RUN python3 /opt/demon/summon.py install all
+# RUN ["/bin/bash", "-c", "demon/setup.sh "]
+# RUN python3 /opt/demon/summon.py install demon -u kasm-user
+# RUN python3 /opt/demon/summon.py install all
 
 
 
