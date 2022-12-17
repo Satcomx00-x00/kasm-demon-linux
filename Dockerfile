@@ -18,12 +18,12 @@ RUN apt-get -y install openvpn unzip wget apt-utils git nano
 RUN echo "kasm-user:Summon" | chpasswd
 RUN usermod -aG sudo kasm-user
 
-RUN cd /opt \ 
-    git clone https://github.com/Satcomx00-x00/Summon-for-docker.git demon \ 
-    cd demon \ 
-    ./setup.sh \ 
-    python3 summon.py install demon -u kasm-user \
-    python3 summon.py install all
+RUN cd /opt 
+RUN git clone https://github.com/Satcomx00-x00/Summon-for-docker.git demon 
+RUN cd demon 
+RUN ./setup.sh 
+RUN python3 summon.py install demon -u kasm-user
+RUN python3 summon.py install all
 
 
 
