@@ -22,7 +22,7 @@ RUN usermod -aG sudo kasm-user
 RUN git clone https://github.com/Satcomx00-x00/Summon-for-docker.git demon 
 RUN pwd
 RUN ls
-
+RUN pip3 install -r demon/requirements.txt
 RUN demon/setup.sh
 RUN python3 demon/summon.py install demon -u kasm-user
 RUN python3 demon/summon.py install all
